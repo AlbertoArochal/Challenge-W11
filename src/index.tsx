@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Form } from './components/screen-1/Form';
+import { Form } from './components/Form';
+import { toLS } from './helpers/toLS';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -8,7 +9,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
-        <Form />
+        <Form initialStep={1} onSubmit={toLS} />
     </React.StrictMode>
 );
 
