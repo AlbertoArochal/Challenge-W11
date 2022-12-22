@@ -15,6 +15,10 @@ export const Form: React.FC<FormProps> = ({ initialStep, onSubmit }) => {
         setStep(step + 1);
     };
 
+    const goBackStep = () => {
+        setStep(step - 1);
+    };
+
     const updateFormData = (data: any) => {
         setFormData({ ...formData, ...data });
     };
@@ -25,7 +29,7 @@ export const Form: React.FC<FormProps> = ({ initialStep, onSubmit }) => {
 
     return (
         <>
-            <Header title="Mi.Formulario" />
+            <Header title="th3h.Formu1ary" />
             <div className="FormContainer">
                 <StepHeader step={step} />
                 {step === 1 && (
@@ -38,6 +42,7 @@ export const Form: React.FC<FormProps> = ({ initialStep, onSubmit }) => {
                     <Step2
                         onChangeStep={goToNextStep}
                         onUpdateFormData={updateFormData}
+                        goBackStep={goBackStep}
                     />
                 )}
                 {step === 3 && (
@@ -46,6 +51,7 @@ export const Form: React.FC<FormProps> = ({ initialStep, onSubmit }) => {
                             onSubmit(formData, step);
                             goToStep4();
                         }}
+                        goBackStep={goBackStep}
                     />
                 )}
                 {step === 4 && <Step4 formData={formData} />}

@@ -5,11 +5,13 @@ import { toLS } from '../../helpers/toLS';
 interface Step2Props {
     onChangeStep: () => void;
     onUpdateFormData: (data: FormData) => void;
+    goBackStep: () => void;
 }
 
 export const Step2: React.FC<Step2Props> = ({
     onChangeStep,
     onUpdateFormData,
+    goBackStep,
 }) => {
     const [formData, setFormData] = useState({
         username: '',
@@ -80,6 +82,7 @@ export const Step2: React.FC<Step2Props> = ({
             >
                 Next
             </button>
+            <button onClick={goBackStep}>Turn Back</button>
         </>
     );
 };

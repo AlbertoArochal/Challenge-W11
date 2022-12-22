@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FormData } from '../../types/props';
 import { Step3Props } from '../../types/props';
 
-export const Step3: React.FC<any> = ({ onSubmit }) => {
+export const Step3: React.FC<any> = ({ onSubmit, goBackStep }) => {
     const [formData, setFormData] = useState<FormData>({});
 
     useEffect(() => {
@@ -25,6 +25,7 @@ export const Step3: React.FC<any> = ({ onSubmit }) => {
                 </p>
             ))}
             <button onClick={onSubmit}>Confirm</button>
+            <button onClick={goBackStep}>Turn Back</button>
         </>
     );
 };
