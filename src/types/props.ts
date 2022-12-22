@@ -3,7 +3,15 @@ export type Step1Props = {
     onUpdateFormData: (formData: FormData) => void;
 };
 
-export type FormProps = {
+export interface FormProps {
     initialStep: number;
-    onSubmit: (formData: FormData) => void;
-};
+    onSubmit: (formData: any, step: number) => void;
+}
+
+export interface FormData {
+    [key: string]: any;
+}
+
+export interface Step3Props {
+    onSubmit: (formData: FormData, step: number) => void;
+}

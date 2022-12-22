@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { FormData } from '../../types/props';
+import { Step3Props } from '../../types/props';
 
-interface Step3Props {
-    onSubmit: () => void;
-}
-
-export const Step3: React.FC<Step3Props> = ({ onSubmit }) => {
+export const Step3: React.FC<any> = ({ onSubmit }) => {
     const [formData, setFormData] = useState<FormData>({});
 
     useEffect(() => {
