@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Form } from './components/Form';
 import { toLS } from './helpers/toLS';
 import reportWebVitals from './reportWebVitals';
+import './index.css';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
