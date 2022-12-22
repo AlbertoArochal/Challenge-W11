@@ -6,24 +6,30 @@ import { Step2 } from './step2/Step2';
 import { Step3 } from './step3/Step3';
 import { Header } from '../components/Header/Header';
 import { StepHeader } from '../components/Header/StepHeader';
+import { Step4 } from './step4/Step4';
 export const Form: React.FC<FormProps> = ({ initialStep, onSubmit }) => {
-    // Estado para almacenar el paso actual y los datos del formulario
     const [step, setStep] = useState(initialStep);
-    const [formData, setFormData] = useState({ Step1Model });
+    const [formData, setFormData] = useState<any>({ Step1Model });
 
-    // Función para cambiar al paso siguiente
     const goToNextStep = () => {
         setStep(step + 1);
     };
 
-    // Función para actualizar los datos del formulario
-    const updateFormData = (data: FormData) => {
+    const goBackStep = () => {
+        setStep(step - 1);
+    };
+
+    const updateFormData = (data: any) => {
         setFormData({ ...formData, ...data });
+    };
+
+    const goToStep4 = () => {
+        setStep(4);
     };
 
     return (
         <>
-            <Header title="Mi.Formulario" />
+            <Header title="th3h.Formu1ary" />
             <div className="FormContainer">
                 <StepHeader step={step} />
                 {step === 1 && (
@@ -36,14 +42,19 @@ export const Form: React.FC<FormProps> = ({ initialStep, onSubmit }) => {
                     <Step2
                         onChangeStep={goToNextStep}
                         onUpdateFormData={updateFormData}
+                        goBackStep={goBackStep}
                     />
                 )}
                 {step === 3 && (
                     <Step3
-                        onChangeStep={goToNextStep}
-                        onUpdateFormData={updateFormData}
+                        onSubmit={() => {
+                            onSubmit(formData, step);
+                            goToStep4();
+                        }}
+                        goBackStep={goBackStep}
                     />
                 )}
+                {step === 4 && <Step4 formData={formData} />}
             </div>
         </>
     );
