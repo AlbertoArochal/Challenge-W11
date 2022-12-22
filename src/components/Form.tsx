@@ -4,6 +4,8 @@ import { FormProps } from '../types/props';
 import { Step1Model } from './step1/Step1Model';
 import { Step2 } from './step2/Step2';
 import { Step3 } from './step3/Step3';
+import { Header } from '../components/Header/Header';
+import { StepHeader } from '../components/Header/StepHeader';
 export const Form: React.FC<FormProps> = ({ initialStep, onSubmit }) => {
     // Estado para almacenar el paso actual y los datos del formulario
     const [step, setStep] = useState(initialStep);
@@ -20,26 +22,29 @@ export const Form: React.FC<FormProps> = ({ initialStep, onSubmit }) => {
     };
 
     return (
-        <div>
-            {step === 1 && (
-                <Step1
-                    onChangeStep={goToNextStep}
-                    onUpdateFormData={updateFormData}
-                />
-            )}
-
-            {step === 2 && (
-                <Step2
-                    onChangeStep={goToNextStep}
-                    onUpdateFormData={updateFormData}
-                />
-            )}
-            {step === 3 && (
-                <Step3
-                    onChangeStep={goToNextStep}
-                    onUpdateFormData={updateFormData}
-                />
-            )}
-        </div>
+        <>
+            <Header title="Mi.Formulario" />
+            <div className="FormContainer">
+                <StepHeader step={step} />
+                {step === 1 && (
+                    <Step1
+                        onChangeStep={goToNextStep}
+                        onUpdateFormData={updateFormData}
+                    />
+                )}
+                {step === 2 && (
+                    <Step2
+                        onChangeStep={goToNextStep}
+                        onUpdateFormData={updateFormData}
+                    />
+                )}
+                {step === 3 && (
+                    <Step3
+                        onChangeStep={goToNextStep}
+                        onUpdateFormData={updateFormData}
+                    />
+                )}
+            </div>
+        </>
     );
 };
